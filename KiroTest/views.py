@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Create your views here.
-@api_view('GET', 'POST')
+@api_view(['GET', 'POST'])
 def cocktail_list(request): 
 
     if request.method == 'GET':

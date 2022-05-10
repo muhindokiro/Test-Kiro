@@ -19,5 +19,6 @@ from KiroTest import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('drinks/', views.cocktail_list)
+    path('drinks/', views.cocktail_list),
+    path('drinks/<int:id>', views.cocktail_detail)
 ]

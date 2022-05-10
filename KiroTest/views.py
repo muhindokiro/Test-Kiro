@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
+from KiroTest import serializers
+
 # Create your views here.
 @api_view(['GET', 'POST'])
 def cocktail_list(request): 
@@ -21,4 +23,17 @@ def cocktail_list(request):
             serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def cocktail_detail(request, id):
     
+    try:
+        cocktail = Drink.objects.get(pk=id)
+    except Drink.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    if request.method == 'GET':
+        serializer = DrinkSerializer(cocktail)
+        return Response(serializer.data)
+    
+   

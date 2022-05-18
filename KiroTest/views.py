@@ -17,6 +17,15 @@ import json
 #     response = requests.request("GET", url, headers=headers, data=payload)
 #     return response
 
+#Create view for local storage
+@api_view(['GET'])
+def localdrinks_list(request):
+    if request.method == 'GET':
+        drink =  Drink.objects.all()
+        serializer = DrinkSerializer(drink,many=True)
+        return JsonResponse({'drink': serializer.data})
+
+
 
 # Create your views here.
 @api_view(['GET'])
@@ -35,7 +44,7 @@ def getLocalCockTails(request):
     
 @api_view(['GET', 'POST'])
 def cocktail_list(request): 
-    
+     
     if request.method == 'GET':
         url = "http://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
         payload={}

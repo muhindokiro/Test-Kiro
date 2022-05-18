@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('drinks/', views.cocktail_list),
     path('cocktails/',views.getLocalCockTails),
-    path('drinks/<int:id>', views.cocktail_detail)
+    path('drinks/<int:id>', views.cocktail_detail),
+    path('localdrinks/', views.localdrinks_list),
+
 ]
